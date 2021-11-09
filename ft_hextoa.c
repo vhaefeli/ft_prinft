@@ -6,13 +6,12 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:40:11 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/08 17:37:34 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:57:58 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
-#include <stdlib.h>
+#include "libft.h"
 
-static size_t hexlen(int nb)
+static size_t hexlen(long nb)
 {
 	size_t ln;
 
@@ -25,8 +24,7 @@ static size_t hexlen(int nb)
 	return (ln);
 }
 
-
-char	*ft_hextoa(int nb)
+char	*ft_hextoa(long nb)
 {
 	char	*hexstr;
 	char	*basehex;
@@ -41,27 +39,11 @@ char	*ft_hextoa(int nb)
 	i--;
 	while (i >= 0)
 	{
-		printf("i%lu  ",i);
 		hexstr[i] = basehex[nb % 16];
-		printf("nb %c\n",basehex[nb % 16]);
 		nb = nb / 16;
 		if (i == 0)
 			break;
 		i--;
 	}
 	return (hexstr);
-}
-
-int main(void)
-{
-	int		*add;
-	char	*str;
-	
-	add = 352;
-	printf("pointeur: %p\n", &add);
-	printf("pointeur en llu: %llu\n", &add);
-	str = ft_hextoa(&add);
-	printf("%s\n", str);
-	free (str);
-	return (0);
 }

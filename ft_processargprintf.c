@@ -1,49 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hextoa.c                                        :+:      :+:    :+:   */
+/*   ft_processargprintf.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/08 15:40:11 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/10 17:54:51 by vhaefeli         ###   ########.fr       */
+/*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
+/*   Updated: 2021/11/10 17:54:40 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+#include "libftprintf.h"
 
-static size_t hexlen(long nb)
+static
+static bool	checkiftype(char input)
 {
-	size_t ln;
+	char const *set;
+	int 		i;
 
-	ln = 0;
-	while (nb)
+	i = 0;
+	set = " -+";
+	while (set[i] != '\0')
 	{
-		nb = nb / 16;
-		ln++;
+		if (input[0] = set[i])
+			return (true);
+		else
+			i++;
 	}
-	return (ln);
+	return (false);
 }
 
-char	*ft_hextoa(unsigned long nb)
+int ft_processargprintf(char const *input, va_list args, int j, int const nbflag)
 {
-	char	*hexstr;
-	char	*basehex;
-	size_t	i;
+	int 	addsize;
+	int		i;
+	char	*str;
+
+	i = j + nbflag;
 	
-	basehex ="0123456789abcdef";
-	i = hexlen(nb);
-	hexstr = malloc(i + 1);
-		if (!hexstr)
-			return (NULL);
-	hexstr[i] = '\0';
-	i--;
-	while (i >= 0)
-	{
-		hexstr[i] = basehex[nb % 16];
-		nb = nb / 16;
-		if (i == 0)
-			break;
-		i--;
-	}
-	return (hexstr);
+
+	
+
+
+	return (addsize);
 }

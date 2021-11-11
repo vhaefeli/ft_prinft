@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fonctions.c                                        :+:      :+:    :+:   */
+/*   ft_precision.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 13:04:27 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/11 15:10:15 by vhaefeli         ###   ########.fr       */
+/*   Created: 2021/11/11 10:07:58 by vhaefeli          #+#    #+#             */
+/*   Updated: 2021/11/11 10:48:14 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_space(const char *input, j
-
-	if (arg = ' ')	
-	{
-		if (nb >= 0)
-			ft_strlcat(dst, 	}
-	if (arg = '#')
-	{
-		write(1,
+int	ft_precision(char const *input, va_list args, int j, int const nbflag)
+{
+	char 	*str;
+	int		addsize
+	
+	addsize = ft_strlen(str);
+	free(str);
+	
+	return (addsize);
+}

@@ -6,31 +6,18 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/10 20:47:28 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/11 15:10:19 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 
-static bool	checktype(char const *input, char *set, int j, int const nbflag)
-{
-	int 		i;
-
-	i = 0;
-	while (set[i] != '\0' && j <= nbflag)
-	{
-		if (input[j + i] = set[i])
-			return (true);
-		else
-			i++;
-	}
-	return (false);
-}
-
 static char *ft_processflagbefore(char const *input, int j, int const nbflag, int addsize)
 {
 	char	*beforestr;
+
+	if (!ft_checktype(input, " " 
 
 	return (beforestr);
 }
@@ -51,10 +38,10 @@ int ft_processargprintf(char const *input, va_list args, int j, int const nbflag
 	char	*afterstr;
 
 	i = j + nbflag;
-	if (checktype(input, ".", j, nbflag))
+	if (ft_checktype(input, ".", j, nbflag))
 	{
-		str = ft_strprecition(input, args, j, nbflag);
-		return (ft_strlen(str));
+		addsize = ft_precision(input, args, j, nbflag);
+		return (addsize);
 	}
 	str = ft_processargtype(input[i], args);
 	addsize = ft_strlen(str);
@@ -64,7 +51,7 @@ int ft_processargprintf(char const *input, va_list args, int j, int const nbflag
 	ft_putstr_fd(str, 1);
 	ft_putstr_fd(afterstr, 1);
 	addsize += ft_strlen(beforestr) + ft_strlen(afterstr);
-	free (str);
+	free(str);
 	free(beforestr);
 	free(afterstr);
 	return (addsize);

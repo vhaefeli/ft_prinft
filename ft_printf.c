@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:42:24 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/10 20:37:55 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/12 12:11:31 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -55,7 +55,7 @@ int	ft_printf(char const *input, ...)
 	nbflag = 0;
 	va_start(args, input);
 	while (i < ft_strlen(input))
-		if (input[i] == % && input[i + 1] != '\0')
+		if (input[i] == "%" && input[i + 1] != '\0')
 		{
 			nbflag = checknbflag(input, i);
 			sizedst += ft_processargprintf(input, args, i + 1, nbflag);

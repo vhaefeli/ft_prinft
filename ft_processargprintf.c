@@ -12,21 +12,17 @@
 
 #include "libft.h"
 #include "libftprintf.h"
+void	ft_putustr(char *s)
+{	
+	int i;
 
-static char *ft_processflagbefore(char const *input, int j, int const nbflag, int addsize)
-{
-	char	*beforestr;
-
-	if (!ft_checktype(input, " " 
-
-	return (beforestr);
-}
-
-static char *ft_processflagafter(char const *input, int j, int const nbflag, int addsize);
-{
-	char 	*afterstr;
-
-	return (afterstr);
+	i = 0;
+	if (!s)
+		return ((void) NULL);
+	if (s[0] = "-")
+		i++;
+	while (i < ft_strlen(s))
+		write (1, s[i], 1);
 }
 
 int ft_processargprintf(const char *input, va_list args, int j, const int nbflag)
@@ -41,9 +37,8 @@ int ft_processargprintf(const char *input, va_list args, int j, const int nbflag
 	addsize = ft_strlen(str);
 	beforestr = ft_processflagbefore(input, j, nbflag, str);
 	ft_putstr_fd(beforestr, 1);
-	ft_putustr_fd(str, 1);
-	addsize += ft_strlen(beforestr) + ft_strlen(afterstr);
-	addsize += ft_processflagafter(input, j, nbflag, addsize);
+	ft_putustr(str);
+	addsize += ft_strlen(beforestr) + ft_processflagafter(input, j, nbflag, str);
 	free(str);
 	free(beforestr);
 	return (addsize);

@@ -6,15 +6,15 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:40:11 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/08 17:37:34 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/17 14:01:28 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <stdlib.h>
 
-static size_t hexlen(long long nb)
+static size_t	hexlen(long long nb)
 {
-	size_t ln;
+	size_t	ln;
 
 	ln = 0;
 	while (nb)
@@ -25,18 +25,17 @@ static size_t hexlen(long long nb)
 	return (ln);
 }
 
-
 char	*ft_hextoa(long long nb)
 {
 	char	*hexstr;
 	char	*basehex;
 	size_t	i;
-	
-	basehex ="0123456789abcdef";
+
+	basehex = "0123456789abcdef";
 	i = hexlen(nb);
 	hexstr = malloc(i + 1);
-		if (!hexstr)
-			return (NULL);
+	if (!hexstr)
+		return (NULL);
 	hexstr[i] = '\0';
 	i--;
 	while (i >= 0)
@@ -44,7 +43,7 @@ char	*ft_hextoa(long long nb)
 		hexstr[i] = basehex[nb % 16];
 		nb = nb / 16;
 		if (i == 0)
-			break;
+			break ;
 		i--;
 	}
 	return (hexstr);

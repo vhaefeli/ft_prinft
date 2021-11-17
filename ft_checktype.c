@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_processargprintf.c                              :+:      :+:    :+:   */
+/*   ft_checktype.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/12 12:11:00 by vhaefeli         ###   ########.fr       */
+/*   Created: 2021/11/17 13:40:20 by vhaefeli          #+#    #+#             */
+/*   Updated: 2021/11/17 13:57:56 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "libftprintf.h"
 
-bool	ft_checktype(const char *input, char *set, const int start, const int nbcheck)
+bool	ft_checktype(char *input, char *set, int start, int nbcheck)
 {
-	int 		i;
+	int	i;
 
 	i = 0;
 	while (set[i] != '\0' && (start + i) <= nbcheck)
 	{
-		if (input[start + i] = set[i])
+		if (input[start + i] == set[i])
 			return (true);
 		else
 			i++;

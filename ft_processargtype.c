@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_processargtype.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/17 17:33:57 by vhaefeli          #+#    #+#             */
+/*   Updated: 2021/11/17 18:21:24 by vhaefeli         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include "libftprintf.h"
 
@@ -19,7 +31,7 @@ static char	*ft_strupcase(char *str)
 
 static unsigned int	ft_unsigned(int i)
 {
-	unsigned int uint;
+	unsigned int	uint;
 
 	if (i < 0)
 		uint = (INT_MAX) + i + 1;
@@ -50,4 +62,3 @@ char	*ft_processargtype(char type, va_list args)
 		str == "%";
 	return (str);
 }
-

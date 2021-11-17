@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:42:24 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/12 12:11:31 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/17 17:16:17 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -14,34 +14,33 @@
 
 static bool	checkiftype(char input)
 {
-	char const *set;
-	int 		i;
+	char	*set;
+	int		i;
 
 	i = 0;
 	set = "cspdiuxX%";
 	while (set[i] != '\0')
 	{
-		if (input[0] = set[i])
+		if (input[0] == set[i])
 			return (true);
 		else
 			i++;
 	}
 	return (false);
 }
-			
-static int	checknbflag(char const *input, i)
+
+static int	checknbflag(char const *input, int i)
 {
-	int nbflag;
+	int	nbflag;
 
 	nbflag = 0;
 	while (!checkiftype(input[i + 1]))
-			{
-				i++ ;
-				nbflag++;
-			}
+	{
+		i++ ;
+		nbflag++;
+	}
 	return (nbflag);
 }
-
 
 int	ft_printf(char const *input, ...)
 {
@@ -52,13 +51,13 @@ int	ft_printf(char const *input, ...)
 
 	sizedst = 0;
 	i = 0;
-	nbflag = 0;
 	va_start(args, input);
 	while (i < ft_strlen(input))
+	{
 		if (input[i] == "%" && input[i + 1] != '\0')
 		{
 			nbflag = checknbflag(input, i);
-			sizedst += ft_processargprintf(input, args, i + 1, nbflag);
+			sizedst += ft_processargprint(input, args, i + 1, nbflag);
 			i = i + nbrflag + 2;
 		}
 		else
@@ -67,6 +66,7 @@ int	ft_printf(char const *input, ...)
 			i++;
 			sizedst++;
 		}
+	}
 	va_end(args);
-	return (sizedst);		
+	return (sizedst);
 }

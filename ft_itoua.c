@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:41:17 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/02 11:45:38 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/17 13:46:15 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static unsigned long	ft_unitp10(unsigned long nb)
 	return (d / 10);
 }
 
-size_t	ft_ln(int n)
+static size_t	ft_ln(int n)
 {
 	size_t	l;
 

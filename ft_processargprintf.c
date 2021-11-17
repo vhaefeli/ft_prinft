@@ -29,30 +29,22 @@ static char *ft_processflagafter(char const *input, int j, int const nbflag, int
 	return (afterstr);
 }
 
-int ft_processargprintf(char const *input, va_list args, int j, int const nbflag)
+int ft_processargprintf(const char *input, va_list args, int j, const int nbflag)
 {
-	int 	addsize;
+	size_t	addsize;
 	int		i;
 	char	*str;
 	char	*beforestr;
-	char	*afterstr;
 
 	i = j + nbflag;
-	if (ft_checktype(input, ".", j, nbflag))
-	{
-		addsize = ft_precision(input, args, j, nbflag);
-		return (addsize);
-	}
 	str = ft_processargtype(input[i], args);
 	addsize = ft_strlen(str);
-	beforestr = ft_processflagbefore(input, j, nbflag, addsize);
-	afterstr = ft_processflagafter(input, j, nbflag, addsize);
+	beforestr = ft_processflagbefore(input, j, nbflag, str);
 	ft_putstr_fd(beforestr, 1);
-	ft_putstr_fd(str, 1);
-	ft_putstr_fd(afterstr, 1);
+	ft_putustr_fd(str, 1);
 	addsize += ft_strlen(beforestr) + ft_strlen(afterstr);
+	addsize += ft_processflagafter(input, j, nbflag, addsize);
 	free(str);
 	free(beforestr);
-	free(afterstr);
 	return (addsize);
 }

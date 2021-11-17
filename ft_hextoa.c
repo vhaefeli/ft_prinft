@@ -6,12 +6,13 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:40:11 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/12 11:00:42 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/08 17:37:34 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
+#include <stdio.h>
+#include <stdlib.h>
 
-static size_t hexlen(long nb)
+static size_t hexlen(long long nb)
 {
 	size_t ln;
 
@@ -24,7 +25,8 @@ static size_t hexlen(long nb)
 	return (ln);
 }
 
-char	*ft_hextoa(unsigned long nb)
+
+char	*ft_hextoa(long long nb)
 {
 	char	*hexstr;
 	char	*basehex;

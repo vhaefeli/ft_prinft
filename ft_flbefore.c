@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 18:00:08 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/22 11:56:55 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/22 19:02:37 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 	if (ft_checktype(input, " +", j, nbflag))
 		spacezero -= 1;
 	else if (ft_checktype(input, "#", j, nbflag))
+	{
+//		printf("#spacezero\n");
 		spacezero -= 2;
+	}
 //	printf("spacezero:%i\n", spacezero);
 	if (spacezero < 0)
 		return (0);
@@ -94,7 +97,10 @@ static size_t	ft_beforesize(const char *input, int j, int nbflag, char *str)
 	else if (ft_checktype(input, " +", j, nbflag))
 		beforesize++;
 	if (ft_checktype(input, "#", j, nbflag) || input[j + nbflag] == 'p')
+	{
+//		printf("#beforesize\n");
 		beforesize += 2;
+	}
 	if (!ft_checktype(input, "-", j, nbflag))
 		beforesize += ft_spacezero(input, j, nbflag, str);
 //	printf("beforesize: %lu\n",beforesize);
@@ -107,6 +113,7 @@ char	*ft_flbefore(const char *input, int j, int nbflag, char *str)
 	size_t	i;
 
 	i = 0;
+//	printf("flbefore\n");
 	beforestr = malloc((ft_beforesize(input, j, nbflag, str)) + 2);
 	if (!ft_checktype(input, "0-", j, nbflag))
 	{

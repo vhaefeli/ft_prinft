@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/22 18:02:16 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/22 18:34:06 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ size_t ft_printstr(const char *input, char *str, int j, int nbflag)
 	}
 	else if (nbflag == 0)
 	{
-		printf("nbflag 0\n");
 		ft_putstr_fd(str, 1);
 		addsize = ft_strlen(str);
 	}
@@ -75,7 +74,6 @@ size_t ft_argprint(const char *input, va_list args, int j, int nbflag)
 	str = ft_argtype(input[i], args);
 	if (input[i] == 's')
 	{
-		printf("s\n");
 		addsize = ft_printstr(input, str, j,nbflag);
 	}
 	else

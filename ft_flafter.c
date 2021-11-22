@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_processflagafter.c                              :+:      :+:    :+:   */
+/*   ft_flafter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:37:13 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/17 18:18:42 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:34:46 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 static int	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 {
@@ -23,22 +22,24 @@ static int	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 	pointnb = 0;
 	i = 0;
 	k = j;
+	nb = malloc(nbflag);
 	if (ft_checktype(input, ".", j, nbflag))
 	{
-		while (input[k] != ".")
+		while (input[k] != '.')
 			k++;
 		k++;
 		while (input[k] < 58)
 			nb[i++] = input[k++];
-		nb[i] = "\0";
+		nb[i] = '\0';
 		pointnb = ft_atoi(nb);
 	}
+	free(nb);
 	if ((pointnb - ft_strlen(str)) < 0)
 		return (0);
 	return (pointnb - ft_strlen(str));
 }
 
-static int	ft_nbpoint(const char *input, int j, const int nbflag)
+static int	ft_nbpoint(const char *input, int j, int nbflag)
 {
 	char	*nb;
 	int		nbpoint;
@@ -48,22 +49,24 @@ static int	ft_nbpoint(const char *input, int j, const int nbflag)
 	nbpoint = 0;
 	i = 0;
 	k = j;
+	nb = malloc(nbflag);
 	if (ft_checktype(input, "123456789", j, nbflag))
 	{
-		while (input[k] != "." && k <= nbflag)
+		while (input[k] != '.' && k <= nbflag)
 		{
 			if (input[k] > 47 && input[k] < 58)
 				nb[i++] = input[k++];
 			else
 				k++;
 		}
-		nb[i] = "\0";
+		nb[i] = '\0';
 		nbpoint = ft_atoi(nb);
 	}
+	free(nb);
 	return (nbpoint);
 }
 
-static int	ft_spacezero(const char *input, int j, const int nbflag, char *str)
+static int	ft_spacezero(const char *input, int j, int nbflag, char *str)
 {
 	int	spacezero;
 
@@ -78,10 +81,10 @@ static int	ft_spacezero(const char *input, int j, const int nbflag, char *str)
 	return (spacezero);
 }
 
-size_t	ft_processflagafter(const char *input, int j, int nbflag, char *str)
+size_t	ft_flafter(const char *input, int j, int nbflag, char *str)
 {
 	size_t	nbspaceafter;
-	int		i;
+	size_t	i;
 
 	i = 0;
 	nbspaceafter = 0;

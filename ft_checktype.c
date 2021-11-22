@@ -6,14 +6,13 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:40:20 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/17 13:57:56 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/20 16:38:47 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "libftprintf.h"
+#include <stdbool.h>
 
-bool	ft_checktype(char *input, char *set, int start, int nbcheck)
+bool	ft_checktype(const char *input, char *set, int start, int nbcheck)
 {
 	int	i;
 

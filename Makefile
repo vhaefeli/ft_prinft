@@ -6,67 +6,60 @@
 #    By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/18 16:28:28 by vhaefeli          #+#    #+#              #
-#    Updated: 2021/11/09 12:43:42 by vhaefeli         ###   ########.fr        #
+#    Updated: 2021/11/22 15:10:15 by vhaefeli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
+CC			= gcc
 
-NAME = libft.a
+NAME 		= libftprintf.a
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS 		= -Wall -Wextra -Werror #-g -fsanitize=address
 
-SRCS =	ft_hextoa.c
+LIBFT_DIR	= ./libft
 
-SRCS_BONUS = ft_lstnew.c\
-			 ft_lstadd_front.c\
-			 ft_lstsize.c\
-			 ft_lstlast.c\
-			 ft_lstadd_back.c\
-			 ft_lstdelone.c\
-			 ft_lstclear.c\
-			 ft_lstiter.c\
-			 ft_lstmap.c
+INCLUDES_DIRS	= ./includes $(LIBFT_DIR)
+
+INCLUDES		= $(addprefix -I,$(INCLUDES_DIRS))
+
+SRCS =	ft_printf.c\
+		ft_hextoa.c\
+		ft_checktype.c\
+		ft_itoua.c\
+		ft_uitoa.c\
+		ft_flstring.c\
+		ft_argprint.c\
+		ft_argtype.c\
+		ft_flafter.c\
+		ft_flbefore.c
 
 
 OBJS = $(SRCS:.c=.o)
 
-OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
 %.o: %.c
-	$(CC) -o $@ -c $^ $(CFLAGS)
+	$(CC) -o $@ -c $^ $(CFLAGS) $(INCLUDES)
 
-$(NAME): $(OBJS)
-	ar -rcs $(NAME) $(OBJS)
-
-bonus: $(OBJS_BONUS) | $(NAME)
-	ar -rcs $(NAME) $(OBJS_BONUS)
+bonus: $(NAME)
  
-clean:
-	rm -f $(OBJS) $(OBJS_BONUS)
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
-
-
-$(NAME): $(OBJS)
-	$(MAKE) bonus -C ./libft
-	cp libft/libft.a $(NAME)
-	$(CC) $(FLAGS) $(INCLUDES) $(SRCS)
+$(NAME): $(LIBFT_DIR)/libft.a $(OBJS)
+	$(MAKE) -C $(LIBFT_DIR)
+	cp $(LIBFT_DIR)/libft.a $(NAME)
 	ar -rcs $(NAME) $(OBJS)
 
-all : $(NAME)
+$(LIBFT_DIR)/libft.a:
+	$(MAKE) -C $(LIBFT_DIR)
 
 clean :
 	$(MAKE) clean -C ./libft
-	rm -rf $(SURPL_O) 
 	rm -rf $(OBJS)
 
 fclean : clean
 	$(MAKE) fclean -C ./libft
 	rm -rf $(NAME)
+
+re: fclean all
+

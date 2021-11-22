@@ -6,11 +6,11 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 10:42:24 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/17 17:16:17 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/22 14:23:46 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
-#include "libftprintf.h"
+
+#include "ft_printf.h"
 
 static bool	checkiftype(char input)
 {
@@ -21,15 +21,16 @@ static bool	checkiftype(char input)
 	set = "cspdiuxX%";
 	while (set[i] != '\0')
 	{
-		if (input[0] == set[i])
+		if (input == set[i])
 			return (true);
 		else
 			i++;
 	}
+//	printf("checkiftype\n");
 	return (false);
 }
 
-static int	checknbflag(char const *input, int i)
+static int	checknbflag(const char *input, int i)
 {
 	int	nbflag;
 
@@ -39,10 +40,11 @@ static int	checknbflag(char const *input, int i)
 		i++ ;
 		nbflag++;
 	}
+//	printf("nbflag: %i\n",nbflag);
 	return (nbflag);
 }
 
-int	ft_printf(char const *input, ...)
+int	ft_printf(const char *input, ...)
 {
 	va_list	args;
 	int		i;
@@ -52,19 +54,21 @@ int	ft_printf(char const *input, ...)
 	sizedst = 0;
 	i = 0;
 	va_start(args, input);
-	while (i < ft_strlen(input))
+	while (i < (int)ft_strlen(input))
 	{
-		if (input[i] == "%" && input[i + 1] != '\0')
+		if (input[i] == '%' && input[i + 1] != '\0')
 		{
 			nbflag = checknbflag(input, i);
-			sizedst += ft_processargprint(input, args, i + 1, nbflag);
-			i = i + nbrflag + 2;
+			sizedst += ft_argprint(input, args, i + 1, nbflag);
+			i = i + nbflag + 2;
+//			printf("printf  if\n");
 		}
 		else
 		{
-			write(1, input[i], 1);
+			write(1, &input[i], 1);
 			i++;
 			sizedst++;
+//			printf(" : printinput\n");
 		}
 	}
 	va_end(args);

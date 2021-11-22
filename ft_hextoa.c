@@ -6,17 +6,19 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 15:40:11 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/17 14:01:28 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/22 13:02:04 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
 #include <stdlib.h>
 
-static size_t	hexlen(long long nb)
+static size_t	hexlen(unsigned long nb)
 {
 	size_t	ln;
 
 	ln = 0;
+	if (nb == 0)
+		return (1);
 	while (nb)
 	{
 		nb = nb / 16;
@@ -25,7 +27,7 @@ static size_t	hexlen(long long nb)
 	return (ln);
 }
 
-char	*ft_hextoa(long long nb)
+char	*ft_hextoa(unsigned long nb)
 {
 	char	*hexstr;
 	char	*basehex;

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoua.c                                         :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:41:17 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/22 15:17:09 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/22 15:15:54 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static size_t	ft_ln(int n)
 	size_t	l;
 
 	l = 0;
+	if (n <= 0)
+		l = 1;
 	while (n)
 	{
 		l++;
@@ -51,7 +53,7 @@ static size_t	ft_ln(int n)
 	return (l);
 }
 
-char	*ft_itoua(int n)
+char	*ft_uitoa(unsigned int n)
 {
 	char			*nbr;
 	unsigned long	nb;
@@ -66,6 +68,8 @@ char	*ft_itoua(int n)
 	nbr = malloc(l + 1);
 	if (!nbr)
 		return (NULL);
+	if (n < 0)
+		nbr[i++] = '-';
 	while (i < l)
 	{
 		nbr[i++] = '0' + ((nb / d) % 10);

@@ -34,7 +34,6 @@ static size_t	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 		pointnb = ft_atoi(nb);
 	}
 	free(nb);
-//	printf("pointleftz: %lu\n",(pointnb - ft_strlen(str)));
 	if (pointnb < ft_strlen(str))
 		return (0);
 	if (str[0] == '-')
@@ -44,10 +43,12 @@ static size_t	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 
 static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 {
-	int	spacezero;
-
+	long int	spacezero;
+//	printf("pointleftz:%li\n", ft_pointleftz(input, j, nbflag, str));
 	spacezero = ft_nbpoint(input, j, nbflag)
 		- ft_pointleftz(input, j, nbflag, str) - ft_strlen(str);
+//	printf("spacezero1:%li\n", spacezero);
+
 	if (ft_checktype(input, " +", j, nbflag))
 		spacezero -= 1;
 	else if (ft_checktype(input, "#", j, nbflag))
@@ -55,7 +56,7 @@ static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 //		printf("#spacezero\n");
 		spacezero -= 2;
 	}
-//	printf("spacezero:%i\n", spacezero);
+//	printf("spacezero2:%li\n", spacezero);
 	if (spacezero < 0)
 		return (0);
 	return ((size_t)spacezero);
@@ -66,6 +67,8 @@ static size_t	ft_beforesize(const char *input, int j, int nbflag, char *str)
 	size_t	beforesize;
 
 	beforesize = ft_pointleftz(input, j, nbflag, str);
+//	printf("beforsize1 :%li\n", beforesize);
+
 	if (str[0] == '-')
 		beforesize++;
 	else if (ft_checktype(input, " +", j, nbflag))
@@ -114,7 +117,10 @@ char	*ft_flbefore(const char *input, int j, int nbflag, char *str)
 	if (!ft_checktype(input, "0-", j, nbflag))
 	{
 		while (i < ft_spacezero(input, j, nbflag, str))
+		{
+//			printf("before space 1 i:%lu\n",i);
 			beforestr[i++] = ' ';
+		}
 	}
 	if (str[0] == '-')
 		beforestr[i++] = '-';

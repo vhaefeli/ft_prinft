@@ -56,9 +56,11 @@ int	ft_printf(const char *input, ...)
 	va_start(args, input);
 	while (i < (int)ft_strlen(input))
 	{
+//		printf("\ni = %d, input[i]= %c\n", i, input[i]);
 		if (input[i] == '%' && input[i + 1] != '\0')
 		{
 			nbflag = checknbflag(input, i);
+//			printf("nbflag %d input i+1 :%c\n", nbflag, input[i+1]);
 			sizedst += ft_argprint(input, args, i + 1, nbflag);
 			i = i + nbflag + 2;
 //			printf("printf  if\n");

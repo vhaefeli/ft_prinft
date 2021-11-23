@@ -32,6 +32,9 @@ static size_t ft_printarg(const char *input, char *str, int j, int nbflag)
 	char	*beforestr;
 
 	i = j + nbflag;
+//	printf("printarg: input[i] %c \n", input[i]);
+//	printf("printarg: str%s\n",str); 
+
 	addsize = ft_strlen(str);
 	if (str[0] == 0)
 		addsize = 1;
@@ -76,6 +79,8 @@ size_t ft_argprint(const char *input, va_list args, int j, int nbflag)
 
 	i = j + nbflag;
 	str = ft_argtype(input[i], args);
+//	printf("argprint str:%s\n",str);
+//	printf("input[i] %c \n", input[i]);
 	if (input[i] == 's')
 	{
 		addsize = ft_printstr(input, str, j,nbflag);

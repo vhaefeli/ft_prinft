@@ -15,7 +15,7 @@
 static int	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 {
 	char	*nb;
-	int		pointnb;
+	size_t		pointnb;
 	int		i;
 	int		k;
 
@@ -34,17 +34,20 @@ static int	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 		pointnb = ft_atoi(nb);
 	}
 	free(nb);
-	if ((pointnb - ft_strlen(str)) < 0)
+	if (pointnb < ft_strlen(str))
 		return (0);
+	if (str[0] == '-')
+		return (pointnb - ft_strlen(str) + 1);
 	return (pointnb - ft_strlen(str));
 }
 
-static int	ft_spacezero(const char *input, int j, int nbflag, char *str)
+static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 {
-	int	spacezero;
+	long int	spacezero;
 
 	spacezero = ft_nbpoint(input, j, nbflag)
 		- ft_pointleftz(input, j, nbflag, str) - ft_strlen(str);
+//	printf("nbpoint %lu,pointleftz %i strlen %lu = spacezero after: %li\n",ft_nbpoint(input, j, nbflag), ft_pointleftz(input, j, nbflag, str), ft_strlen(str), spacezero);
 	if (ft_checktype(input, " +", j, nbflag))
 		spacezero -= 1;
 	else if (ft_checktype(input, "#", j, nbflag))
@@ -58,11 +61,12 @@ size_t	ft_flafter(const char *input, int j, int nbflag, char *str)
 {
 	size_t	nbspaceafter;
 	size_t	i;
-
+	
 	i = 0;
 	nbspaceafter = 0;
 	if (ft_checktype(input, "-", j, nbflag))
 		nbspaceafter = (size_t)ft_spacezero(input, j, nbflag, str);
+//	printf("nbspaceafter: %lu\n", nbspaceafter);
 	while (i < nbspaceafter)
 	{
 		write(1, " ", 1);

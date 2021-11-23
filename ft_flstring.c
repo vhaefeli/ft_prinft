@@ -92,7 +92,7 @@ size_t	ft_flstring(const char *input, int j, int nbflag, char *str)
 			printf("1");
 			write (1, " ", 1);
 		}
-		while (i++ < ft_nbpointstr(input, j, nbflag, str))
+		while (i++ <= ft_nbpointstr(input, j, nbflag, str))
 			write (1, &str[k++], 1);
 	}
 	if (ft_nbpointstr(input, j, nbflag, str) > pointnb)

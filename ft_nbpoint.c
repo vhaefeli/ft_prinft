@@ -25,14 +25,17 @@ size_t	ft_nbpoint(const char *input, int j, int nbflag)
 	nb = malloc(nbflag);
 	if (ft_checktype(input, "123456789", j, nbflag))
 	{
-		while (input[k] != '.' && k <= nbflag)
+
+		while (input[k] != '.' && k <= (j + nbflag))
 		{
+//			printf("input[k]:%c\n", input[k]);
 			if (input[k] > 47 && input[k] < 58)
 				nb[i++] = input[k++];
 			else
 				k++;
 		}
 		nb[i] = '\0';
+//		printf("NB:%s\n", nb);
 		nbpoint = ft_atoi(nb);
 	}
 	free(nb);

@@ -77,6 +77,6 @@ char	*ft_argtype(char type, va_list args)
 	}
 	if (type == 'X')
 		str = ft_strupcase(ft_hextoa(va_arg(args, unsigned int)));
-
+//	printf("argtype str: %s\n", str);
 	return (str);
 }

@@ -24,5 +24,6 @@ char	*ft_argtype(char type, va_list args);
 char	*ft_flbefore(const char *input, int j, int nbflag, char *str);
 size_t	ft_flafter(const char *input, int j, int nbflag, char *str);
 size_t	ft_flstring(const char *input, int j, int nbflag, char *str);
+size_t  ft_nbpoint(const char *input, int j, int nbflag);
 
 #endif

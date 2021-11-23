@@ -31,7 +31,8 @@ SRCS =	ft_printf.c\
 		ft_argprint.c\
 		ft_argtype.c\
 		ft_flafter.c\
-		ft_flbefore.c
+		ft_flbefore.c\
+		ft_nbpoint.c
 
 
 OBJS = $(SRCS:.c=.o)

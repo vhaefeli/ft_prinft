@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:32:25 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/22 17:37:28 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/23 18:03:13 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ static int	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 	return (pointnb);
 }
 
-static size_t	ft_nbpoint(const char *input, int j, int nbflag)
+size_t	ft_nbpointstr(const char *input, int j, int nbflag,char *str)
 {
 	char	*nb;
-	size_t		nbpoint;
+	int		nbpoint;
 	int		i;
 	int		k;
 
@@ -63,6 +63,8 @@ static size_t	ft_nbpoint(const char *input, int j, int nbflag)
 		nbpoint = ft_atoi(nb);
 	}
 	free(nb);
+	if (nbpoint < ft_lencutstr(input, j, nbflag, str))
+		return (ft_lencutstr(input, j, nbflag, str));
 	return (nbpoint);
 }
 
@@ -79,17 +81,21 @@ size_t	ft_flstring(const char *input, int j, int nbflag, char *str)
 	{
 		while (i < pointnb)
 			write (1, &str[i++], 1);
-		while (i++ < ft_nbpoint(input, j, nbflag))
+		while (i++ < ft_nbpointstr(input, j, nbflag, str))
 			write (1, " ", 1);
 	}
 	else
 	{
-		while (i++ < ft_nbpoint(input, j, nbflag) - pointnb)
+		while (i++ < ft_nbpointstr(input, j, nbflag, str) - pointnb)
+		{
+			break;
+			printf("1");
 			write (1, " ", 1);
-		while (i++ < ft_nbpoint(input, j, nbflag))
+		}
+		while (i++ < ft_nbpointstr(input, j, nbflag, str))
 			write (1, &str[k++], 1);
 	}
-	if (ft_nbpoint(input, j, nbflag) > pointnb)
-		return (ft_nbpoint(input, j, nbflag));
+	if (ft_nbpointstr(input, j, nbflag, str) > pointnb)
+		return (ft_nbpointstr(input, j, nbflag, str));
 	return (pointnb);
 }

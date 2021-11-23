@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/22 18:34:06 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/23 15:35:14 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ static size_t ft_printarg(const char *input, char *str, int j, int nbflag)
 
 	i = j + nbflag;
 	addsize = ft_strlen(str);
+	if (str[0] == 0)
+		addsize = 1;
 	beforestr = ft_flbefore(input, j, nbflag, str);
 	ft_putstr_fd(beforestr, 1);
 	ft_putustr(str);
@@ -42,6 +44,7 @@ static size_t ft_printarg(const char *input, char *str, int j, int nbflag)
 	addsize += ft_flafter(input, j, nbflag, str);
 	free(beforestr);
 	free(str);
+//	printf("addsize: %lu\n", addsize);
 	return (addsize);
 }
 
@@ -54,13 +57,14 @@ size_t ft_printstr(const char *input, char *str, int j, int nbflag)
 		write(1,"(null)",6);
 		addsize = 6;
 	}
-	else if (nbflag == 0)
+	else if (ft_checktype(input, ".-", j, nbflag))
+		addsize = ft_flstring(input, j, nbflag, str);
+	else
 	{
 		ft_putstr_fd(str, 1);
 		addsize = ft_strlen(str);
 	}
-	else
-		addsize = ft_flstring(input, j, nbflag, str);
+
 	return (addsize);
 }
 

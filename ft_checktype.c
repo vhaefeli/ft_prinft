@@ -6,23 +6,32 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 13:40:20 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/22 18:49:19 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:35:12 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdbool.h>
+#include "ft_printf.h"
 
 bool	ft_checktype(const char *input, char *set, int start, int nbcheck)
 {
 	int	i;
+	int j;
 
 	i = 0;
-	while (set[i] != '\0' && i <= nbcheck)
+	j = 0;
+	while (j <= nbcheck)
 	{
-		if (input[start + i] == set[i])
-			return (true);
-		else
-			i++;
+		while (set[i] != '\0')
+		{
+			if (input[start + j] == set[i])
+			{
+				return (true);
+			}
+			else
+				i++;
+		}
+		j++;
+		i = 0;
 	}
 	return (false);
 }

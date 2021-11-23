@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:37:13 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/20 16:34:46 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/23 14:44:29 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,33 +37,6 @@ static int	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 	if ((pointnb - ft_strlen(str)) < 0)
 		return (0);
 	return (pointnb - ft_strlen(str));
-}
-
-static int	ft_nbpoint(const char *input, int j, int nbflag)
-{
-	char	*nb;
-	int		nbpoint;
-	int		i;
-	int		k;
-
-	nbpoint = 0;
-	i = 0;
-	k = j;
-	nb = malloc(nbflag);
-	if (ft_checktype(input, "123456789", j, nbflag))
-	{
-		while (input[k] != '.' && k <= nbflag)
-		{
-			if (input[k] > 47 && input[k] < 58)
-				nb[i++] = input[k++];
-			else
-				k++;
-		}
-		nb[i] = '\0';
-		nbpoint = ft_atoi(nb);
-	}
-	free(nb);
-	return (nbpoint);
 }
 
 static int	ft_spacezero(const char *input, int j, int nbflag, char *str)

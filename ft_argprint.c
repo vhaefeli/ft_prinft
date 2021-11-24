@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/23 15:35:14 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/24 15:27:38 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@ static void	ft_putustr(char *s)
 		write (1, &s[i++], 1);
 }
 
-static size_t ft_printarg(const char *input, char *str, int j, int nbflag)
+static size_t	ft_printarg(const char *input, char *str, int j, int nbflag)
 {
 	size_t	addsize;
 	size_t	i;
 	char	*beforestr;
 
 	i = j + nbflag;
-//	printf("printarg: input[i] %c \n", input[i]);
-//	printf("printarg: str%s\n",str); 
-
 	addsize = ft_strlen(str);
 	if (str[0] == 0)
 		addsize = 1;
@@ -47,17 +44,16 @@ static size_t ft_printarg(const char *input, char *str, int j, int nbflag)
 	addsize += ft_flafter(input, j, nbflag, str);
 	free(beforestr);
 	free(str);
-//	printf("addsize: %lu\n", addsize);
 	return (addsize);
 }
 
-size_t ft_printstr(const char *input, char *str, int j, int nbflag)
+size_t	ft_printstr(const char *input, char *str, int j, int nbflag)
 {
 	size_t	addsize;
 
 	if (!str)
 	{
-		write(1,"(null)",6);
+		write(1, "(null)", 6);
 		addsize = 6;
 	}
 	else if (ft_checktype(input, ".-0123456789", j, nbflag))
@@ -67,11 +63,10 @@ size_t ft_printstr(const char *input, char *str, int j, int nbflag)
 		ft_putstr_fd(str, 1);
 		addsize = ft_strlen(str);
 	}
-
 	return (addsize);
 }
 
-size_t ft_argprint(const char *input, va_list args, int j, int nbflag)
+size_t	ft_argprint(const char *input, va_list args, int j, int nbflag)
 {
 	size_t	addsize;
 	size_t	i;
@@ -79,11 +74,9 @@ size_t ft_argprint(const char *input, va_list args, int j, int nbflag)
 
 	i = j + nbflag;
 	str = ft_argtype(input[i], args);
-//	printf("argprint str:%s\n",str);
-//	printf("input[i] %c \n", input[i]);
 	if (input[i] == 's')
 	{
-		addsize = ft_printstr(input, str, j,nbflag);
+		addsize = ft_printstr(input, str, j, nbflag);
 	}
 	else
 	{

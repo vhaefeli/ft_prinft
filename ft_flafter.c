@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:37:13 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/23 14:44:29 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/24 16:14:16 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 {
 	char	*nb;
-	size_t		pointnb;
+	size_t	pointnb;
 	int		i;
 	int		k;
 
@@ -47,7 +47,6 @@ static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 
 	spacezero = ft_nbpoint(input, j, nbflag)
 		- ft_pointleftz(input, j, nbflag, str) - ft_strlen(str);
-//	printf("nbpoint %lu,pointleftz %i strlen %lu = spacezero after: %li\n",ft_nbpoint(input, j, nbflag), ft_pointleftz(input, j, nbflag, str), ft_strlen(str), spacezero);
 	if (ft_checktype(input, " +", j, nbflag))
 		spacezero -= 1;
 	else if (ft_checktype(input, "#", j, nbflag))
@@ -61,12 +60,11 @@ size_t	ft_flafter(const char *input, int j, int nbflag, char *str)
 {
 	size_t	nbspaceafter;
 	size_t	i;
-	
+
 	i = 0;
 	nbspaceafter = 0;
 	if (ft_checktype(input, "-", j, nbflag))
 		nbspaceafter = (size_t)ft_spacezero(input, j, nbflag, str);
-//	printf("nbspaceafter: %lu\n", nbspaceafter);
 	while (i < nbspaceafter)
 	{
 		write(1, " ", 1);

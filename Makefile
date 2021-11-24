@@ -6,7 +6,7 @@
 #    By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/18 16:28:28 by vhaefeli          #+#    #+#              #
-#    Updated: 2021/11/22 15:10:15 by vhaefeli         ###   ########.fr        #
+#    Updated: 2021/11/24 16:18:46 by vhaefeli         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ CC			= gcc
 
 NAME 		= libftprintf.a
 
-CFLAGS 		= -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS 		= -Wall -Wextra -Werror
 
 LIBFT_DIR	= ./libft
 
@@ -24,6 +24,8 @@ INCLUDES		= $(addprefix -I,$(INCLUDES_DIRS))
 
 SRCS =	ft_printf.c\
 		ft_hextoa.c\
+		ft_hextoap.c\
+		ft_checkzero.c\
 		ft_checktype.c\
 		ft_itoua.c\
 		ft_uitoa.c\
@@ -32,6 +34,7 @@ SRCS =	ft_printf.c\
 		ft_argtype.c\
 		ft_flafter.c\
 		ft_flbefore.c\
+		ft_plusspace.c\
 		ft_nbpoint.c
 
 

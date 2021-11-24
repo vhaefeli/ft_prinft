@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-static int	ft_lencutstr(const char *input, int j, int nbflag, char *str)
+static size_t	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 {
 	char	*nb;
-	int		pointnb;
+	size_t		pointnb;
 	int		i;
 	int		k;
 
@@ -34,7 +34,7 @@ static int	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 		pointnb = ft_atoi(nb);
 	}
 	free(nb);
-	if ((pointnb - ft_strlen(str)) < 0)
+	if (pointnb > ft_strlen(str))
 		return (ft_strlen(str));
 	return (pointnb);
 }
@@ -42,7 +42,7 @@ static int	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 size_t	ft_nbpointstr(const char *input, int j, int nbflag,char *str)
 {
 	char	*nb;
-	int		nbpoint;
+	size_t		nbpoint;
 	int		i;
 	int		k;
 
@@ -52,7 +52,7 @@ size_t	ft_nbpointstr(const char *input, int j, int nbflag,char *str)
 	nb = malloc(nbflag);
 	if (ft_checktype(input, "123456789", j, nbflag))
 	{
-		while (input[k] != '.' && k <= nbflag)
+		while (input[k] != '.' && k <= j + nbflag)
 		{
 			if (input[k] > 47 && input[k] < 58)
 				nb[i++] = input[k++];
@@ -60,6 +60,7 @@ size_t	ft_nbpointstr(const char *input, int j, int nbflag,char *str)
 				k++;
 		}
 		nb[i] = '\0';
+		
 		nbpoint = ft_atoi(nb);
 	}
 	free(nb);
@@ -77,6 +78,8 @@ size_t	ft_flstring(const char *input, int j, int nbflag, char *str)
 	i = 0;
 	k = 0;
 	pointnb = (size_t)ft_lencutstr(input, j, nbflag, str);
+	printf("pointnb:%lu\n",pointnb);
+	printf("nbpoint:%lu\n",ft_nbpointstr(input, j, nbflag, str));
 	if (ft_checktype(input, "-", j, nbflag))
 	{
 		while (i < pointnb)
@@ -88,8 +91,7 @@ size_t	ft_flstring(const char *input, int j, int nbflag, char *str)
 	{
 		while (i++ < ft_nbpointstr(input, j, nbflag, str) - pointnb)
 		{
-			break;
-			printf("1");
+//			printf("1");
 			write (1, " ", 1);
 		}
 		while (i++ <= ft_nbpointstr(input, j, nbflag, str))

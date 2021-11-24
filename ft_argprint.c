@@ -60,7 +60,7 @@ size_t ft_printstr(const char *input, char *str, int j, int nbflag)
 		write(1,"(null)",6);
 		addsize = 6;
 	}
-	else if (ft_checktype(input, ".-", j, nbflag))
+	else if (ft_checktype(input, ".-0123456789", j, nbflag))
 		addsize = ft_flstring(input, j, nbflag, str);
 	else
 	{

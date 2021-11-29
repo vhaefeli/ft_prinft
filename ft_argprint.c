@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/24 15:27:38 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/26 14:01:29 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static size_t	ft_printarg(const char *input, char *str, int j, int nbflag)
 	return (addsize);
 }
 
-size_t	ft_printstr(const char *input, char *str, int j, int nbflag)
+static size_t	ft_printstr(const char *input, char *str, int j, int nbflag)
 {
 	size_t	addsize;
 

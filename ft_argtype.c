@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:33:57 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/24 15:34:00 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/26 16:02:08 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ static unsigned int	ft_unsigned(int i)
 		uint = (UINT_MAX) + i + 1;
 	else
 		uint = i;
+	printf("uint:%u\n", uint);
 	return (uint);
 }
 

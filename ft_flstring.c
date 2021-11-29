@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:32:25 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/24 13:21:23 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/29 11:49:05 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static size_t	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 		pointnb = ft_atoi(nb);
 	}
 	free(nb);
-	if (pointnb > ft_strlen(str))
+	if (pointnb > ft_strlen(str) || !ft_checktype(input, ".",j, nbflag))
 		return (ft_strlen(str));
 	return (pointnb);
 }

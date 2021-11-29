@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 18:00:08 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/26 12:06:53 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:14:54 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ char	*ft_flbefore(const char *input, int j, int nbflag, char *str)
 
 	i = 0;
 	beforestr = malloc((ft_beforesize(input, j, nbflag, str)) + 2);
-	if (!ft_checktype(input, "-", j, nbflag) && !ft_checkzero(input, j, nbflag))
+	if (!ft_checktype(input, "-", j, nbflag) && (!ft_checkzero(input, j, nbflag)
+				|| ft_checktype(input, ".", j, nbflag)))
 	{
 		while (i < ft_spacezero(input, j, nbflag, str))
 			beforestr[i++] = ' ';

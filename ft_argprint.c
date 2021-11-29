@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/26 14:01:29 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:50:57 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static size_t	ft_printarg(const char *input, char *str, int j, int nbflag)
 	size_t	i;
 	char	*beforestr;
 
+	if (!str)
+		str = "(null)";
 	i = j + nbflag;
 	addsize = ft_strlen(str);
 	if (str[0] == 0)
@@ -52,11 +54,8 @@ static size_t	ft_printstr(const char *input, char *str, int j, int nbflag)
 	size_t	addsize;
 
 	if (!str)
-	{
-		write(1, "(null)", 6);
-		addsize = 6;
-	}
-	else if (ft_checktype(input, ".-0123456789", j, nbflag))
+		str = "(null)";
+	if (ft_checktype(input, ".-0123456789", j, nbflag))
 		addsize = ft_flstring(input, j, nbflag, str);
 	else
 	{

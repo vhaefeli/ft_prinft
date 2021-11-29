@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:33:57 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/26 16:02:08 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:15:02 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,6 @@ static char	*ft_strupcase(char *str)
 		i++;
 	}
 	return (str);
-}
-
-static unsigned int	ft_unsigned(int i)
-{
-	unsigned int	uint;
-
-	if (i < 0)
-		uint = (UINT_MAX) + i + 1;
-	else
-		uint = i;
-	printf("uint:%u\n", uint);
-	return (uint);
 }
 
 char	*ft_onecar(char type, va_list args)
@@ -66,7 +54,7 @@ char	*ft_argtype(char type, va_list args)
 	if (type == 'd' || type == 'i')
 		str = ft_itoa(va_arg(args, int));
 	if (type == 'u')
-		str = ft_uitoa(ft_unsigned(va_arg(args, int)));
+		str = ft_uitoa(va_arg(args,unsigned int));
 	if (type == 'x')
 		str = ft_hextoa(va_arg(args, unsigned int));
 	if (type == 'X')

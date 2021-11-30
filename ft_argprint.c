@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 17:38:09 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/30 16:47:42 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:27:56 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ static size_t	ft_printarg(const char *input, char *str, int j, int nbflag)
 	if (!str)
 		str = "(null)";
 	i = j + nbflag;
-	if (input[j + nbflag] == 'p' &&  str[3] == '0' && str[4] == '\0')
-		str[3] = '\0';
 	addsize = ft_strlen(str);
-	if (str[0] == '0' && str[1] == '\0' && ft_checktype(input, ".", j ,nbflag))
+	if (str[0] == '0' && str[1] == '\0' && ft_checktype(input, ".", j, nbflag))
 	{
 		str[0] = '\0';
 		addsize = 0;

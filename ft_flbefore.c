@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 18:00:08 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/30 13:59:44 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:40:57 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_pointleftz(const char *input, int j, int nbflag, char *str)
 	pointnb = 0;
 	i = 0;
 	k = j;
-	nb = malloc(nbflag);
+	nb = malloc(nbflag + 1);
 	if (ft_checktype(input, ".", j, nbflag))
 	{
 		while (input[k] != '.')
@@ -66,7 +66,7 @@ static size_t	ft_beforesize(const char *input, int j, int nbflag, char *str)
 	else if (ft_checktype(input, " +", j, nbflag))
 		beforesize++;
 	if ((ft_checktype(input, "#", j, nbflag) && str[0] != '0')
-			|| input[j + nbflag] == 'p')
+		|| input[j + nbflag] == 'p')
 		beforesize += 2;
 	if (!ft_checktype(input, "-", j, nbflag))
 		beforesize += ft_spacezero(input, j, nbflag, str);
@@ -92,7 +92,7 @@ char	*ft_flbefore(const char *input, int j, int nbflag, char *str)
 	i = 0;
 	beforestr = malloc((ft_beforesize(input, j, nbflag, str)) + 2);
 	if (!ft_checktype(input, "-", j, nbflag) && (!ft_checkzero(input, j, nbflag)
-				|| ft_checktype(input, ".", j, nbflag)))
+			|| ft_checktype(input, ".", j, nbflag)))
 	{
 		while (i < ft_spacezero(input, j, nbflag, str))
 			beforestr[i++] = ' ';
@@ -101,8 +101,8 @@ char	*ft_flbefore(const char *input, int j, int nbflag, char *str)
 		beforestr[i++] = '-';
 	else if (ft_checktype(input, " +", j, nbflag))
 		beforestr[i++] = ft_plusspace(input, j, nbflag);
-	else if ((ft_checktype(input, "#", j, nbflag) && str[0] != '0') 
-			|| input[j + nbflag] == 'p')
+	else if ((ft_checktype(input, "#", j, nbflag) && str[0] != '0')
+		|| input[j + nbflag] == 'p')
 	{
 		beforestr[i++] = '0';
 		beforestr[i++] = ft_xhash(input, j, nbflag);

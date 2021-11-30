@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:41:17 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/29 14:18:56 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:22:56 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static size_t	ft_ln(unsigned int n)
 char	*ft_uitoa(unsigned int n)
 {
 	char			*nbr;
-
 	size_t			i;
 	size_t			d;
 	size_t			l;

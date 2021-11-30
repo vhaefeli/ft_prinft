@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 18:00:08 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/24 13:47:41 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:16:36 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ size_t	ft_nbpoint(const char *input, int j, int nbflag)
 	nbpoint = 0;
 	i = 0;
 	k = j;
-	nb = malloc(nbflag);
+	nb = malloc(nbflag + 1);
 	if (ft_checktype(input, "123456789", j, nbflag))
 	{
 		while (input[k] != '.' && k <= (j + nbflag))

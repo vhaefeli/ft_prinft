@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 11:32:25 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/29 14:31:32 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:29:51 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static size_t	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 	pointnb = 0;
 	i = 0;
 	k = j;
-	nb = malloc(nbflag);
+	nb = malloc(nbflag + 1);
 	if (ft_checktype(input, ".", j, nbflag))
 	{
 		while (input[k] != '.')
@@ -34,7 +34,7 @@ static size_t	ft_lencutstr(const char *input, int j, int nbflag, char *str)
 		pointnb = ft_atoi(nb);
 	}
 	free(nb);
-	if (pointnb > ft_strlen(str) || !ft_checktype(input, ".",j, nbflag))
+	if (pointnb > ft_strlen(str) || !ft_checktype(input, ".", j, nbflag))
 		return (ft_strlen(str));
 	return (pointnb);
 }
@@ -59,7 +59,7 @@ static size_t	ft_nbpointstr(const char *input, int j, int nbflag, char *str)
 	nbpoint = 0;
 	i = 0;
 	k = j;
-	nb = malloc(nbflag);
+	nb = malloc(nbflag + 1);
 	if (ft_checktype(input, "123456789", j, nbflag))
 	{
 		while (input[k] != '.' && k <= j + nbflag)

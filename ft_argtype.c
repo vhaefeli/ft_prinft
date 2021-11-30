@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:33:57 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/30 16:44:24 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 17:27:23 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ char	*ft_argtype(char type, va_list args)
 	if (type == 'd' || type == 'i')
 		str = ft_itoa(va_arg(args, int));
 	if (type == 'u')
-		str = ft_uitoa(va_arg(args,unsigned int));
+		str = ft_uitoa(va_arg(args, unsigned int));
 	if (type == 'x')
 		str = ft_hextoa(va_arg(args, unsigned int));
 	if (type == 'X')

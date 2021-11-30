@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 18:00:08 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/29 16:14:54 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 13:59:44 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 		- ft_pointleftz(input, j, nbflag, str) - ft_strlen(str);
 	if (ft_checktype(input, " +", j, nbflag))
 		spacezero -= 1;
-	else if (ft_checktype(input, "#", j, nbflag))
+	else if (ft_checktype(input, "#", j, nbflag) || input[j + nbflag] == 'p')
 		spacezero -= 2;
 	if (spacezero < 0)
 		return (0);
@@ -65,7 +65,8 @@ static size_t	ft_beforesize(const char *input, int j, int nbflag, char *str)
 		beforesize++;
 	else if (ft_checktype(input, " +", j, nbflag))
 		beforesize++;
-	if (ft_checktype(input, "#", j, nbflag) && str[0] != '0')
+	if ((ft_checktype(input, "#", j, nbflag) && str[0] != '0')
+			|| input[j + nbflag] == 'p')
 		beforesize += 2;
 	if (!ft_checktype(input, "-", j, nbflag))
 		beforesize += ft_spacezero(input, j, nbflag, str);
@@ -100,7 +101,8 @@ char	*ft_flbefore(const char *input, int j, int nbflag, char *str)
 		beforestr[i++] = '-';
 	else if (ft_checktype(input, " +", j, nbflag))
 		beforestr[i++] = ft_plusspace(input, j, nbflag);
-	else if (ft_checktype(input, "#", j, nbflag) && str[0] != '0')
+	else if ((ft_checktype(input, "#", j, nbflag) && str[0] != '0') 
+			|| input[j + nbflag] == 'p')
 	{
 		beforestr[i++] = '0';
 		beforestr[i++] = ft_xhash(input, j, nbflag);

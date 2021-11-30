@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:33:57 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/29 14:15:02 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 16:44:24 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,29 +28,20 @@ static char	*ft_strupcase(char *str)
 	return (str);
 }
 
-char	*ft_onecar(char type, va_list args)
-{
-	char	*str;
-
-	str = malloc(2);
-	str[1] = '\0';
-	if (type == 'c')
-		str[0] = va_arg(args, int);
-	if (type == '%')
-		str[0] = '%';
-	return (str);
-}
-
 char	*ft_argtype(char type, va_list args)
 {
 	char	*str;
 
-	if (type == 'c' || type == '%')
-		str = ft_onecar(type, args);
+	if (type == '%')
+	{
+		str = malloc(2);
+		str[0] = '%';
+		str[1] = '\0';
+	}
 	if (type == 's')
 		str = va_arg(args, char *);
 	if (type == 'p')
-		str = ft_hextoap(va_arg(args, unsigned long));
+		str = ft_hextoa(va_arg(args, unsigned long));
 	if (type == 'd' || type == 'i')
 		str = ft_itoa(va_arg(args, int));
 	if (type == 'u')

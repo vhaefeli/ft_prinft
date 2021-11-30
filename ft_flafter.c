@@ -6,7 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 17:37:13 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/11/24 16:14:16 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/11/30 14:08:02 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static size_t	ft_spacezero(const char *input, int j, int nbflag, char *str)
 		- ft_pointleftz(input, j, nbflag, str) - ft_strlen(str);
 	if (ft_checktype(input, " +", j, nbflag))
 		spacezero -= 1;
-	else if (ft_checktype(input, "#", j, nbflag))
+	else if (ft_checktype(input, "#", j, nbflag) || input[j + nbflag] == 'p')
 		spacezero -= 2;
 	if (spacezero < 0)
 		return (0);
